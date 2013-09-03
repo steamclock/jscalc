@@ -4,16 +4,22 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
+import android.widget.TextView;
 
 import org.mozilla.javascript.*;
 
 public class MainActivity extends Activity {
     private static final String TAG = MainActivity.class.getName();
 
+    public TextView display;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        display = (TextView) findViewById(R.id.textView);
+
         testJs();
     }
 
@@ -34,7 +40,14 @@ public class MainActivity extends Activity {
             Object console = Context.javaToJS(new ConsoleWrapper(), scope);
             ScriptableObject.putProperty(scope, "console", console);
 
-            String test = "console.log('o hai'); ['hello', 'world'].join(' ');";
+            //set up display widget
+            Object wDisplay = Context.javaToJS(display, scope);
+            ScriptableObject.putProperty(scope, "display", wDisplay);
+
+
+            String test = "console.log('o hai'); " +
+                    "var text = 'hello javascript';" +
+                    "display.setText(text);";
 
             Object result = cx.evaluateString(scope, test, "testJs", 1, null);
 

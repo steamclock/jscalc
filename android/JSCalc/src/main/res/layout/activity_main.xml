@@ -135,7 +135,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/hello_world"
-            android:id="@+id/textView2"
+            android:id="@+id/textView"
             android:layout_alignParentTop="true"
             android:layout_alignLeft="@+id/button1"
             android:layout_marginTop="23dp"
