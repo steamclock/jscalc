@@ -15,4 +15,7 @@ xcuserdata
 profile
 *.moved-aside
 DerivedData
+#android studio
 .idea/
+.gradle/
+
