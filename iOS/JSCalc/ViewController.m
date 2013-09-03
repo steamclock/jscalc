@@ -118,7 +118,12 @@
 }
 
 -(IBAction)buttonPress:(id)sender {
-    [self.calculator invokeMethod:@"buttonPress" withArguments:@[sender]];
+    UIButton *button = (UIButton*)sender;
+    NSAssert(button, @"buttonPress without a button?");
+
+    NSString* operation = [button currentTitle];
+
+    [self.calculator invokeMethod:@"buttonPress" withArguments:@[operation]];
     [self checkException];
 }
 

@@ -15,8 +15,7 @@ calculator = {
     
     fragile: initialState.fragile,
     
-    buttonPress: function (button) {
-        var operation = button.currentTitle();
+    buttonPress: function (operation) {
         var isNumber = !isNaN(operation);
         
         if(operation === "=") {
