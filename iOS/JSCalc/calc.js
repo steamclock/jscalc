@@ -42,6 +42,5 @@ calculator = {
 }
 
 display.setText(calculator.currentExpression);
-display.setTextAlignment(2);
 
 console.log("Loaded calc.js");
