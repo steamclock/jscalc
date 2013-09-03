@@ -8,6 +8,7 @@ import android.view.Menu;
 import org.mozilla.javascript.*;
 
 public class MainActivity extends Activity {
+    private static final String TAG = MainActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,7 +16,6 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         testJs();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -30,15 +30,25 @@ public class MainActivity extends Activity {
         try {
             Scriptable scope = cx.initStandardObjects();
 
-            String test = "['hello', 'world'].join(' ');";
+            //set up console.log
+            Object console = Context.javaToJS(new ConsoleWrapper(), scope);
+            ScriptableObject.putProperty(scope, "console", console);
 
-            Object result = cx.evaluateString(scope, test, "<cmd>", 1, null);
+            String test = "console.log('o hai'); ['hello', 'world'].join(' ');";
 
-            Log.d("tag", Context.toString(result));
+            Object result = cx.evaluateString(scope, test, "testJs", 1, null);
+
+            Log.d(TAG, Context.toString(result));
         } catch (Exception ex) {
-            Log.e("tag", ex.toString());
+            Log.e(TAG, ex.toString());
         } finally {
             Context.exit();
+        }
+    }
+
+    public class ConsoleWrapper {
+        public void log(String text) {
+            Log.d("js-console", text);
         }
     }
 }
