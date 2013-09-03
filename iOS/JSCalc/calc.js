@@ -1,9 +1,10 @@
 // default state of calculator object
 var initialState = {
     currentExpression: "0",
-    fragile: true
+    fragile: true //fragile means it was just eval'd, and we may want to reuse it or wipe it depending on the next keypress.
 };
 
+//keep the old state if we're reloading this file.
 if(typeof calculator != 'undefined') {
     initialState = calculator;
 }
