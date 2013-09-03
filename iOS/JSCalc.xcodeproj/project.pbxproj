@@ -21,9 +21,9 @@
 		A6C0A5CB17B434CC00D188BE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C0A5AD17B434CC00D188BE /* UIKit.framework */; };
 		A6C0A5D317B434CC00D188BE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A6C0A5D117B434CC00D188BE /* InfoPlist.strings */; };
 		A6C0A5D517B434CC00D188BE /* JSCalcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C0A5D417B434CC00D188BE /* JSCalcTests.m */; };
-		A6C0A5E017B4352500D188BE /* calc.js in Sources */ = {isa = PBXBuildFile; fileRef = A6C0A5DF17B4352500D188BE /* calc.js */; };
 		A6C0A5E217B4358F00D188BE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C0A5E117B4358F00D188BE /* JavaScriptCore.framework */; };
-		A6C0A5E517B438C700D188BE /* calc.js in Resources */ = {isa = PBXBuildFile; fileRef = A6C0A5DF17B4352500D188BE /* calc.js */; };
+		E4751BE017D6ACE1002B6E64 /* calc.js in Sources */ = {isa = PBXBuildFile; fileRef = E4751BDF17D6ACE1002B6E64 /* calc.js */; };
+		E4751BE117D6ACE1002B6E64 /* calc.js in Sources */ = {isa = PBXBuildFile; fileRef = E4751BDF17D6ACE1002B6E64 /* calc.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,8 +56,8 @@
 		A6C0A5D017B434CC00D188BE /* JSCalcTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JSCalcTests-Info.plist"; sourceTree = "<group>"; };
 		A6C0A5D217B434CC00D188BE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A6C0A5D417B434CC00D188BE /* JSCalcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCalcTests.m; sourceTree = "<group>"; };
-		A6C0A5DF17B4352500D188BE /* calc.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = calc.js; sourceTree = "<group>"; };
 		A6C0A5E117B4358F00D188BE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		E4751BDF17D6ACE1002B6E64 /* calc.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = calc.js; path = ../../Common/calc.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,7 +163,7 @@
 		A6C0A5DE17B4350000D188BE /* Javascript */ = {
 			isa = PBXGroup;
 			children = (
-				A6C0A5DF17B4352500D188BE /* calc.js */,
+				E4751BDF17D6ACE1002B6E64 /* calc.js */,
 			);
 			name = Javascript;
 			path = JSCalc;
@@ -245,7 +245,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6C0A5E517B438C700D188BE /* calc.js in Resources */,
 				A6C0A5C217B434CC00D188BE /* Images.xcassets in Resources */,
 				A6C0A5B417B434CC00D188BE /* InfoPlist.strings in Resources */,
 				A6C0A5BD17B434CC00D188BE /* Main.storyboard in Resources */,
@@ -268,7 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6C0A5C017B434CC00D188BE /* ViewController.m in Sources */,
-				A6C0A5E017B4352500D188BE /* calc.js in Sources */,
+				E4751BE017D6ACE1002B6E64 /* calc.js in Sources */,
 				A6C0A5BA17B434CC00D188BE /* AppDelegate.m in Sources */,
 				A6C0A5B617B434CC00D188BE /* main.m in Sources */,
 			);
@@ -279,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6C0A5D517B434CC00D188BE /* JSCalcTests.m in Sources */,
+				E4751BE117D6ACE1002B6E64 /* calc.js in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +473,7 @@
 				A6C0A5DA17B434CC00D188BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A6C0A5DB17B434CC00D188BE /* Build configuration list for PBXNativeTarget "JSCalcTests" */ = {
 			isa = XCConfigurationList;
@@ -481,6 +482,7 @@
 				A6C0A5DD17B434CC00D188BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
