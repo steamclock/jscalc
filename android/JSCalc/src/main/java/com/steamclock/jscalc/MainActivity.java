@@ -8,9 +8,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.io.Reader;
+
 import junit.framework.Assert;
 
 import org.mozilla.javascript.*;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class MainActivity extends Activity {
     private static final String TAG = MainActivity.class.getName();
@@ -25,7 +31,7 @@ public class MainActivity extends Activity {
 
         display = (TextView) findViewById(R.id.textView);
 
-        testJs();
+        initJs();
     }
 
     @Override
@@ -41,19 +47,17 @@ public class MainActivity extends Activity {
         runInJSContext(new JSRunnable() {
             @Override
             public void run(Context cx) {
-                Function testClick = (Function) scope.get("testClick", scope);
-                Assert.assertNotNull(testClick);
+                Scriptable calculator = (Scriptable)scope.get("calculator", scope);
+                Function click = (Function) calculator.get("buttonPress", calculator);
 
-                Object wButton = Context.javaToJS(button, scope);
-                Object[] args = {wButton};
+                Object[] args = {button.getText()};
 
-                Object result = testClick.call(cx, scope, scope, args);
-                Log.d(TAG, Context.toString(result));
+                click.call(cx, scope, calculator, args);
             }
         });
     }
 
-    public void testJs() {
+    public void initJs() {
         runInJSContext(new JSRunnable() {
             @Override
             public void run(Context cx) {
@@ -67,18 +71,22 @@ public class MainActivity extends Activity {
                 Object wDisplay = Context.javaToJS(display, scope);
                 ScriptableObject.putProperty(scope, "display", wDisplay);
 
-
-                String test = "console.log('o hai'); " +
-                        "var text = 'hello javascript';" +
-                        "display.setText(text);" +
-                        "function testClick(button) {" +
-                        " console.log(button.getText());" +
-                        "}";
-
-                Object result = cx.evaluateString(scope, test, "testJs", 1, null);
-                Log.d(TAG, Context.toString(result));
+                //load the code
+                try {
+                    Reader reader = getJSFileAsReader();
+                    cx.evaluateReader(scope, reader, "initJs", 1, null);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
+    }
+
+    private Reader getJSFileAsReader() throws IOException {
+        InputStream is = getAssets().open("calc.js");
+        Log.d(TAG, "converting...");
+        Reader reader = new InputStreamReader(is);
+        return reader;
     }
 
     private void runInJSContext(JSRunnable code) {
