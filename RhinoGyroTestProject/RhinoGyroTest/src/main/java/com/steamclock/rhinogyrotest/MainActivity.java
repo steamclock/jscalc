@@ -64,7 +64,7 @@ public class MainActivity extends Activity implements SensorEventListener {
         mLastFpsUpdate = System.nanoTime();
         mEventCount = 0;
 
-        mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_FASTEST);
     }
 
     protected void onPause() {
@@ -111,7 +111,7 @@ public class MainActivity extends Activity implements SensorEventListener {
     public void onSensorChanged(SensorEvent sensorEvent) {
         assert(sensorEvent.sensor.getType() == Sensor.TYPE_ROTATION_VECTOR);
 
-        Log.d(TAG, "event");
+        //Log.d(TAG, "event");
         mAccuracy.setText(String.valueOf(sensorEvent.accuracy));
         mTimestamp.setText(String.valueOf(sensorEvent.timestamp));
         mX.setText(String.valueOf(sensorEvent.values[0]));
@@ -127,7 +127,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 
         long now = System.nanoTime();
         if (now - mLastFpsUpdate >= 1e9) {
-            Log.d(TAG, "updating fps");
+            //Log.d(TAG, "updating fps");
             mFps.setText(String.valueOf(mEventCount));
             mLastFpsUpdate = now;
             mEventCount = 0;
