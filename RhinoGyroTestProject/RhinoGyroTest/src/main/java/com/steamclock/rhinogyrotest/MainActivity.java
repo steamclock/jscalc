@@ -1,6 +1,5 @@
 package com.steamclock.rhinogyrotest;
 
-import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -10,6 +9,8 @@ import android.app.Activity;
 import android.view.Menu;
 import android.util.Log;
 import android.widget.TextView;
+
+import org.mozilla.javascript.*;
 
 public class MainActivity extends Activity implements SensorEventListener {
     public static final String TAG = "MainActivity";
@@ -23,13 +24,14 @@ public class MainActivity extends Activity implements SensorEventListener {
     private TextView mZ;
     private TextView mC;
     private TextView mA;
+    private Scriptable scope;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mSensorManager = (SensorManager) getSystemService(android.content.Context.SENSOR_SERVICE);
         mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
 
         mAccuracy = (TextView) findViewById(R.id.accuracy);
@@ -39,6 +41,8 @@ public class MainActivity extends Activity implements SensorEventListener {
         mZ = (TextView) findViewById(R.id.valZ);
         mC = (TextView) findViewById(R.id.valC);
         mA = (TextView) findViewById(R.id.valA);
+
+        initJs();
     }
 
     @Override
@@ -56,6 +60,41 @@ public class MainActivity extends Activity implements SensorEventListener {
     protected void onPause() {
         super.onPause();
         mSensorManager.unregisterListener(this);
+    }
+
+    public void initJs() {
+        runInJSContext(new JSRunnable() {
+            @Override
+            public void run(Context cx) {
+                scope = cx.initStandardObjects();//set up console.log
+
+                //console.log
+                Object wConsole = Context.javaToJS(new ConsoleWrapper(), scope);
+                ScriptableObject.putProperty(scope, "console", wConsole);
+
+                cx.evaluateString(scope, "console.log('hello world');", "initJs", 1, null);
+            }
+        });
+    }
+
+    private void runInJSContext(JSRunnable code) {
+        final Context cx = Context.enter();
+        cx.setOptimizationLevel(-1); //needed for the stock rhino jar. TODO: try the ASE jar instead.
+        try {
+            code.run(cx);
+        } catch (Exception ex) {
+            Log.e(TAG, ex.toString());
+        } finally {
+            Context.exit();
+        }
+    }
+    private interface JSRunnable {
+        public void run(Context cx);
+    }
+    public class ConsoleWrapper {
+        public void log(String text) {
+            Log.d("js-console", text);
+        }
     }
 
     @Override
