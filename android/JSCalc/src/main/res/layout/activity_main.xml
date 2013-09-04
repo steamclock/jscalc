@@ -14,8 +14,8 @@
             android:text="7"
             android:id="@+id/button1"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/button"
-            android:onClick="buttonPressed"/>
+            android:onClick="buttonPressed"
+            android:layout_toLeftOf="@+id/button"/>
 
     <Button
             android:layout_width="wrap_content"
@@ -31,9 +31,9 @@
             android:layout_height="wrap_content"
             android:text="9"
             android:id="@+id/button2"
+            android:onClick="buttonPressed"
             android:layout_alignTop="@+id/button"
-            android:layout_centerHorizontal="true"
-            android:onClick="buttonPressed"/>
+            android:layout_centerHorizontal="true"/>
 
     <Button
             android:layout_width="wrap_content"
@@ -52,7 +52,8 @@
             android:id="@+id/button4"
             android:layout_below="@+id/button1"
             android:layout_alignLeft="@+id/button1"
-            android:onClick="buttonPressed"/>
+            android:onClick="buttonPressed"
+            android:layout_toLeftOf="@+id/button"/>
 
     <Button
             android:layout_width="wrap_content"
@@ -88,7 +89,8 @@
             android:id="@+id/button8"
             android:layout_below="@+id/button4"
             android:layout_alignLeft="@+id/button4"
-            android:onClick="buttonPressed"/>
+            android:onClick="buttonPressed"
+            android:layout_toLeftOf="@+id/button9"/>
 
     <Button
             android:layout_width="wrap_content"
