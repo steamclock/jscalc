@@ -17,18 +17,19 @@ public class MainActivity extends Activity implements SensorEventListener {
     private SensorManager mSensorManager;
     private Sensor mSensor;
     //UI
-    private TextView mAccuracy;
-    private TextView mTimestamp;
-    private TextView mX;
-    private TextView mY;
-    private TextView mZ;
-    private TextView mC;
-    private TextView mA;
-    private TextView mFps;
+    public TextView mAccuracy;
+    public TextView mTimestamp;
+    public TextView mX;
+    public TextView mY;
+    public TextView mZ;
+    public TextView mC;
+    public TextView mA;
+    public TextView mFps;
     //js
     private Scriptable scope;
+    private boolean mInJsMode;
     //FPS
-    private long mLastFpsUpdate;
+    public long mLastFpsUpdate;
     public int mEventCount;
 
     @Override
@@ -49,6 +50,8 @@ public class MainActivity extends Activity implements SensorEventListener {
         mFps = (TextView) findViewById(R.id.fps);
 
         initJs();
+
+        mInJsMode = true;
     }
 
     @Override
@@ -82,7 +85,11 @@ public class MainActivity extends Activity implements SensorEventListener {
                 Object wConsole = Context.javaToJS(new ConsoleWrapper(), scope);
                 ScriptableObject.putProperty(scope, "console", wConsole);
 
-                cx.evaluateString(scope, "console.log('hello world');", "initJs", 1, null);
+                //ui access
+                Object wActivity = Context.javaToJS(MainActivity.this, scope);
+                ScriptableObject.putProperty(scope, "activity", wActivity);
+
+                cx.evaluateString(scope, mJsCode, "initJs", 1, null);
             }
         });
     }
@@ -111,6 +118,14 @@ public class MainActivity extends Activity implements SensorEventListener {
     public void onSensorChanged(SensorEvent sensorEvent) {
         assert(sensorEvent.sensor.getType() == Sensor.TYPE_ROTATION_VECTOR);
 
+        if (mInJsMode) {
+            jsSensorHandler(sensorEvent);
+        } else {
+            nativeSensorHandler(sensorEvent);
+        }
+    }
+
+    public void nativeSensorHandler(SensorEvent sensorEvent) {
         //Log.d(TAG, "event");
         mAccuracy.setText(String.valueOf(sensorEvent.accuracy));
         mTimestamp.setText(String.valueOf(sensorEvent.timestamp));
@@ -135,8 +150,45 @@ public class MainActivity extends Activity implements SensorEventListener {
 
     }
 
+    public void jsSensorHandler(final SensorEvent sensorEvent) {
+        //call handleEvent
+        runInJSContext(new JSRunnable() {
+            @Override
+            public void run(Context cx) {
+                Function handleEvent = (Function) scope.get("handleEvent", scope);
+                Object wEvent = Context.javaToJS(sensorEvent, scope);
+                Object[] args = {wEvent};
+                handleEvent.call(cx, scope, scope, args);
+            }
+        });
+    }
+
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
         Log.d(TAG, "accuracy change");
     }
+
+    private static final String mJsCode = "function handleEvent(sensorEvent){" +
+            " console.log('got event');" +
+            " activity.mAccuracy.setText(sensorEvent.accuracy.toString());" +
+            " activity.mTimestamp.setText(sensorEvent.timestamp.toString());" +
+            " activity.mX.setText(sensorEvent.values[0].toString());" +
+            " activity.mY.setText(sensorEvent.values[1].toString());" +
+            " activity.mZ.setText(sensorEvent.values[2].toString());" +
+            " if (sensorEvent.values.length > 3) {" +
+            "  activity.mC.setText(sensorEvent.values[3].toString());" +
+            " }" +
+            " if (sensorEvent.values.length > 4) {" +
+            "  activity.mA.setText(sensorEvent.values[4].toString());" +
+            " }" +
+            " activity.mEventCount++;" +
+            "" +
+            " var now = java.lang.System.nanoTime();" +
+            " if (now - activity.mLastFpsUpdate >= 1e9) {" +
+            "  activity.mFps.setText(activity.mEventCount.toString());" +
+            "  activity.mLastFpsUpdate = now;" +
+            "  activity.mEventCount = 0;" +
+            " }" +
+            "}" +
+            "console.log('js loaded');";
 }
