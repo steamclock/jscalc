@@ -24,7 +24,12 @@ public class MainActivity extends Activity implements SensorEventListener {
     private TextView mZ;
     private TextView mC;
     private TextView mA;
+    private TextView mFps;
+    //js
     private Scriptable scope;
+    //FPS
+    private long mLastFpsUpdate;
+    public int mEventCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,7 @@ public class MainActivity extends Activity implements SensorEventListener {
         mZ = (TextView) findViewById(R.id.valZ);
         mC = (TextView) findViewById(R.id.valC);
         mA = (TextView) findViewById(R.id.valA);
+        mFps = (TextView) findViewById(R.id.fps);
 
         initJs();
     }
@@ -54,6 +60,10 @@ public class MainActivity extends Activity implements SensorEventListener {
 
     protected void onResume() {
         super.onResume();
+
+        mLastFpsUpdate = System.nanoTime();
+        mEventCount = 0;
+
         mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
@@ -112,6 +122,15 @@ public class MainActivity extends Activity implements SensorEventListener {
         }
         if (sensorEvent.values.length > 4) {
             mA.setText(String.valueOf(sensorEvent.values[4]));
+        }
+        mEventCount++;
+
+        long now = System.nanoTime();
+        if (now - mLastFpsUpdate >= 1e9) {
+            Log.d(TAG, "updating fps");
+            mFps.setText(String.valueOf(mEventCount));
+            mLastFpsUpdate = now;
+            mEventCount = 0;
         }
 
     }
