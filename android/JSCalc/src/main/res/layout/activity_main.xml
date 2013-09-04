@@ -154,6 +154,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignLeft="@+id/button1"
             android:layout_marginTop="23dp"
-            android:layout_alignRight="@+id/button3"/>
+            android:layout_alignRight="@+id/button3"
+            android:gravity="right"/>
 
 </RelativeLayout>
