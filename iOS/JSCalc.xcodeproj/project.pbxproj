@@ -24,6 +24,7 @@
 		A6C0A5E217B4358F00D188BE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C0A5E117B4358F00D188BE /* JavaScriptCore.framework */; };
 		E4751BE017D6ACE1002B6E64 /* calc.js in Resources */ = {isa = PBXBuildFile; fileRef = E4751BDF17D6ACE1002B6E64 /* calc.js */; };
 		E4751BE117D6ACE1002B6E64 /* calc.js in Sources */ = {isa = PBXBuildFile; fileRef = E4751BDF17D6ACE1002B6E64 /* calc.js */; };
+		E4751BE517D92EA9002B6E64 /* UIControl+SCBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = E4751BE417D92EA9002B6E64 /* UIControl+SCBlocks.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		A6C0A5D417B434CC00D188BE /* JSCalcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCalcTests.m; sourceTree = "<group>"; };
 		A6C0A5E117B4358F00D188BE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		E4751BDF17D6ACE1002B6E64 /* calc.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = calc.js; path = ../../Common/calc.js; sourceTree = "<group>"; };
+		E4751BE317D92EA9002B6E64 /* UIControl+SCBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+SCBlocks.h"; sourceTree = "<group>"; };
+		E4751BE417D92EA9002B6E64 /* UIControl+SCBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+SCBlocks.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +130,8 @@
 				A6C0A5BF17B434CC00D188BE /* ViewController.m */,
 				A6C0A5C117B434CC00D188BE /* Images.xcassets */,
 				A6C0A5B017B434CC00D188BE /* Supporting Files */,
+				E4751BE317D92EA9002B6E64 /* UIControl+SCBlocks.h */,
+				E4751BE417D92EA9002B6E64 /* UIControl+SCBlocks.m */,
 			);
 			path = JSCalc;
 			sourceTree = "<group>";
@@ -268,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6C0A5C017B434CC00D188BE /* ViewController.m in Sources */,
+				E4751BE517D92EA9002B6E64 /* UIControl+SCBlocks.m in Sources */,
 				A6C0A5BA17B434CC00D188BE /* AppDelegate.m in Sources */,
 				A6C0A5B617B434CC00D188BE /* main.m in Sources */,
 			);
