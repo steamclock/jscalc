@@ -20,7 +20,7 @@ These steps work for me (besides one ignorable error):
 * Open Android Studio
 * Select "Open Project"
 * Choose android/build.gradle
-* Check 'auto-import' and 'gradle wrapper'
+* Check 'auto-import'
 * Click ok, and wait a minute
 
 After that you can just select it from the 'recent projects' list.
