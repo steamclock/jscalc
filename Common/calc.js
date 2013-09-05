@@ -56,12 +56,18 @@ calculator = {
         
     },
     clear: function(){
+        console.log('clearing');
         this.currentExpression = "";
         this.expressionIsAns = false;
         this.inDecimal = false;
         this.endsInSymbol = false;
     }
 };
+
+if (clearButton) {
+    console.log('clear button exists, trying to connect');
+    //FIXME clearButton.addTarget(calculator, 'clear', 1 << 6); //UIControlEventTouchUpInside);
+}
 
 display.setText(calculator.currentExpression);
 

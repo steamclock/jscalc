@@ -15,6 +15,7 @@
 @protocol ButtonExport <JSExport>
 
 -(NSString*)currentTitle;
+- (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
 
 @end
 
@@ -45,6 +46,7 @@
 @property (nonatomic) JSValue* calculator;
 
 @property (nonatomic) IBOutlet UILabel* display;
+@property (nonatomic) IBOutlet UIButton* clearButton;
 
 @property (nonatomic) NSDate* lastLoad;
 @end
@@ -65,6 +67,7 @@
     
     self.context[@"console"] = [[Console alloc] init];
     self.context[@"display"] = self.display;
+    self.context[@"clearButton"] = self.clearButton;
 
     [self setup:[[NSBundle mainBundle] pathForResource:@"calc" ofType:@"js"]];
     

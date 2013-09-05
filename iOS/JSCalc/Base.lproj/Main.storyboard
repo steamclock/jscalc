@@ -239,6 +239,16 @@
                                     <constraint firstAttribute="height" secondItem="kO9-io-RAs" secondAttribute="height" id="Cv1-iV-86U"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7f-cT-hRz">
+                                <rect key="frame" x="0.0" y="199" width="160" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.99442380666732788" green="0.74847102165222168" blue="0.75451934337615967" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <state key="normal" title="Clear">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -248,6 +258,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="clearButton" destination="q7f-cT-hRz" id="HhJ-bC-1PH"/>
                         <outlet property="display" destination="kO9-io-RAs" id="K57-Ss-Cx4"/>
                     </connections>
                 </viewController>
