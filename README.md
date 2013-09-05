@@ -5,6 +5,13 @@ A cross-platform mobile calculator with the logic in JavaScript and native UI on
 
 This is a proof of concept applciation for JSConf EU 2012, and Steamclock's future work on embedding JavaScript into native apps.
 
+
+Building For iOS
+================
+
+Open iOS/JSCalc.xcodeproj in XCode 5. It should run on any ios 7 device.
+
+
 Building For Android
 ====================
 
