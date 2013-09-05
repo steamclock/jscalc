@@ -68,6 +68,7 @@
 
     [self setup:[[NSBundle mainBundle] pathForResource:@"calc" ofType:@"js"]];
     
+    // Poll for changes in the JavaScript
     [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(checkReload) userInfo:nil repeats:YES];
 }
 
