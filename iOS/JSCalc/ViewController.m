@@ -21,7 +21,6 @@
 @protocol LabelExport <JSExport>
 
 -(void)setText:(NSString*)text;
--(void)setTextAlignment:(UITextAlignment)alignment;
 
 @end
 
