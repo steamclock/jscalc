@@ -54,23 +54,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    Protocol* newProtocol = @protocol(ButtonExport);
-    class_addProtocol([UIButton class], newProtocol);
-    
-    newProtocol = @protocol(LabelExport);
-    class_addProtocol([UILabel class], newProtocol);
-    
-    self.context = [[JSContext alloc] init];
-    
-    self.context[@"console"] = [[Console alloc] init];
-    self.context[@"display"] = self.display;
-    self.context[@"clearButton"] = self.clearButton;
 
+    [self setupProtocols];
+    [self setupContext];
     [self setup:[[NSBundle mainBundle] pathForResource:@"calc" ofType:@"js"]];
     
     // Poll for changes in the JavaScript
     [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(checkReload) userInfo:nil repeats:YES];
+}
+
+-(void) setupProtocols {
+    //existing classes need a protocol added to expose API to javascript
+    Protocol* newProtocol = @protocol(ButtonExport);
+    class_addProtocol([UIButton class], newProtocol);
+
+    newProtocol = @protocol(LabelExport);
+    class_addProtocol([UILabel class], newProtocol);
+}
+
+-(void) setupContext {
+    //expose our objects to javascript
+    self.context = [[JSContext alloc] init];
+    self.context[@"console"] = [[Console alloc] init];
+    self.context[@"display"] = self.display;
+    self.context[@"clearButton"] = self.clearButton;
 }
 
 - (void)didReceiveMemoryWarning
@@ -100,11 +107,12 @@
 }
 
 -(void)setup:(NSString*)source {
+    //load the cross-platform javascript
     NSString* js = [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:source] encoding:NSUTF8StringEncoding];
-    
     [self.context evaluateScript:js];
     [self checkException];
 
+    //make its calculator object easily accessible to objective C
     self.calculator = self.context[@"calculator"];
     
     self.lastLoad = [NSDate new];
