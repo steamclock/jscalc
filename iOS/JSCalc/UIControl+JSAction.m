@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Nigel Brooke. All rights reserved.
 //
 
-#import "UIControl+SCBlocks.h"
+#import "UIControl+JSAction.h"
 #import <objc/runtime.h>
 
 @implementation UIControl (JSAction)
