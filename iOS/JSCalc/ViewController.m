@@ -14,7 +14,6 @@
 
 @protocol ButtonExport <JSExport>
 
--(NSString*)currentTitle;
 - (void) setOnClickListener:(JSValue*)handler;
 
 @end
