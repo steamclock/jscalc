@@ -73,7 +73,8 @@ calculator = {
 //intentional global-this to check existence safely
 if (this.clearButton) {
     console.log('clear button exists, trying to connect');
-    clearButton.addClickHandler(calculator.clearToZero.bind(calculator));
+    //not using bind here because rhino's magic "pass a function where an interface is expected" thing does not work with bind.
+    clearButton.setOnClickListener(function(){calculator.clearToZero();});
 }
 
 display.setText(calculator.currentExpression);

@@ -159,4 +159,13 @@
             android:layout_alignRight="@+id/button3"
             android:gravity="right"/>
 
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clear"
+            android:id="@+id/clearButton"
+            android:layout_above="@+id/button1"
+            android:layout_alignLeft="@+id/button1"
+            android:layout_toLeftOf="@+id/button2"/>
+
 </RelativeLayout>

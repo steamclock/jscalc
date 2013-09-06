@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
     private static final String TAG = MainActivity.class.getName();
 
     public TextView display;
+    public Button clearButton;
     private Scriptable scope;
 
     @Override
@@ -30,6 +31,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         display = (TextView) findViewById(R.id.textView);
+        clearButton = (Button) findViewById(R.id.clearButton);
 
         initJs();
     }
@@ -67,9 +69,12 @@ public class MainActivity extends Activity {
                 Object wConsole = Context.javaToJS(new ConsoleWrapper(), scope);
                 ScriptableObject.putProperty(scope, "console", wConsole);
 
-                //set up display widget
+                //set up widgets
                 Object wDisplay = Context.javaToJS(display, scope);
                 ScriptableObject.putProperty(scope, "display", wDisplay);
+
+                Object wClear = Context.javaToJS(clearButton, scope);
+                ScriptableObject.putProperty(scope, "clearButton", wClear);
 
                 //load the code
                 try {
