@@ -70,7 +70,8 @@ calculator = {
     }
 };
 
-if (clearButton) {
+//intentional global-this to check existence safely
+if (this.clearButton) {
     console.log('clear button exists, trying to connect');
     clearButton.addClickHandler(calculator.clearToZero.bind(calculator));
 }
