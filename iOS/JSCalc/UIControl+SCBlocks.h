@@ -9,17 +9,18 @@
 /*
  This category adds support for using a JSValue instead of a selector for UIControlEvents.
  Only one binding per UIControl is supported.
- FIXME: this class needs a rename.
  */
 
 
 #import <UIKit/UIKit.h>
 #import "JavaScriptCore/JSValue.h"
 
-@interface UIControl (SCBlocks)
+@interface UIControl (JSAction)
 
 - (void) addEventHandler:(JSValue*)handler forControlEvents:(UIControlEvents)controlEvents;
+
 //convenience func for UIControlEventTouchUpInside
-- (void) addClickHandler:(JSValue*)handler;
+//uses the Android method name so that we don't need additional wrappers.
+- (void) setOnClickListener:(JSValue*)handler;
 
 @end

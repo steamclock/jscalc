@@ -9,7 +9,7 @@
 #import "UIControl+SCBlocks.h"
 #import <objc/runtime.h>
 
-@implementation UIControl (SCBlocks)
+@implementation UIControl (JSAction)
 
 static const char * BlockKey = "SCBlocks";
 
@@ -18,7 +18,7 @@ static const char * BlockKey = "SCBlocks";
     [self addTarget:self action:@selector(handleControlEvent) forControlEvents:controlEvents];
 }
 
-- (void) addClickHandler:(JSValue*)handler {
+- (void) setOnClickListener:(JSValue*)handler {
     [self addEventHandler:handler forControlEvents:UIControlEventTouchUpInside];
 }
 
