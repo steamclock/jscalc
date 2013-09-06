@@ -56,17 +56,23 @@ calculator = {
         
     },
     clear: function(){
-        console.log('clearing');
         this.currentExpression = "";
         this.expressionIsAns = false;
         this.inDecimal = false;
         this.endsInSymbol = false;
+    },
+    clearToZero: function() {
+        this.currentExpression = "0";
+        this.expressionIsAns = true;
+        this.inDecimal = false;
+        this.endsInSymbol = false;
+        display.setText(this.currentExpression);
     }
 };
 
 if (clearButton) {
     console.log('clear button exists, trying to connect');
-    //FIXME clearButton.addTarget(calculator, 'clear', 1 << 6); //UIControlEventTouchUpInside);
+    clearButton.addClickHandler(calculator.clearToZero.bind(calculator));
 }
 
 display.setText(calculator.currentExpression);

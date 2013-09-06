@@ -15,7 +15,7 @@
 @protocol ButtonExport <JSExport>
 
 -(NSString*)currentTitle;
-- (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
+- (void) addClickHandler:(JSValue*)handler;
 
 @end
 

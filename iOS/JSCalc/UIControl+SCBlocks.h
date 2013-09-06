@@ -6,12 +6,20 @@
 //  Copyright (c) 2013 Nigel Brooke. All rights reserved.
 //
 
+/*
+ This category adds support for using a JSValue instead of a selector for UIControlEvents.
+ Only one binding per UIControl is supported.
+ FIXME: this class needs a rename.
+ */
+
+
 #import <UIKit/UIKit.h>
+#import "JavaScriptCore/JSValue.h"
 
 @interface UIControl (SCBlocks)
 
-- (void) addEventHandler:(void(^)(void))handler forControlEvents:(UIControlEvents)controlEvents;
+- (void) addEventHandler:(JSValue*)handler forControlEvents:(UIControlEvents)controlEvents;
 //convenience func for UIControlEventTouchUpInside
-- (void) addClickHandler:(void(^)(void))handler;
+- (void) addClickHandler:(JSValue*)handler;
 
 @end
