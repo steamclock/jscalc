@@ -87,7 +87,7 @@
 
 -(void)checkException {
     if (self.context.exception) {
-        NSLog(@"js excaption: %@", self.context.exception);
+        NSLog(@"js exception: %@", self.context.exception);
     }
 
     self.context.exception = nil;
