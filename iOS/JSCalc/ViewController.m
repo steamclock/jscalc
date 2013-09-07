@@ -24,20 +24,6 @@
 
 @end
 
-@protocol ConsoleExport <JSExport>
--(void)log:(NSString*)string;
-@end
-
-@interface Console : NSObject <ConsoleExport>
-@end
-
-@implementation Console
-
--(void)log:(NSString*)string {
-    NSLog(@"js: %@", string);
-}
-@end
-
 @interface ViewController ()
 
 @property (nonatomic) JSContext* context;
@@ -75,7 +61,14 @@
 -(void) setupContext {
     //expose our objects to javascript
     self.context = [[JSContext alloc] init];
-    self.context[@"console"] = [[Console alloc] init];
+
+    //we can't set console.log in the context directly, only top-level objects, so let's build a top-level dummy object for console
+    JSValue* console = [JSValue valueWithNewObjectInContext:self.context];
+    console[@"log"] = ^void(NSString* string){
+        NSLog(@"js: %@", string);
+    };
+    self.context[@"console"] = console;
+
     self.context[@"display"] = self.display;
     self.context[@"clearButton"] = self.clearButton;
 }
