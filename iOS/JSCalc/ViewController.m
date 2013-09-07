@@ -8,21 +8,9 @@
 
 #import "ViewController.h"
 #import "JavaScriptCore/JSContext.h"
-#import "JavaScriptCore/JSExport.h"
 #import "JavaScriptCore/JSValue.h"
 #import "objc/runtime.h"
-
-@protocol ButtonExport <JSExport>
-
-- (void) setOnClickListener:(JSValue*)handler;
-
-@end
-
-@protocol LabelExport <JSExport>
-
--(void)setText:(NSString*)text;
-
-@end
+#import "UIControl+JSAction.h"
 
 @interface ViewController ()
 
@@ -41,7 +29,6 @@
 {
     [super viewDidLoad];
 
-    [self setupProtocols];
     [self setupContext];
     [self setup:[[NSBundle mainBundle] pathForResource:@"calc" ofType:@"js"]];
     
@@ -49,28 +36,30 @@
     [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(checkReload) userInfo:nil repeats:YES];
 }
 
--(void) setupProtocols {
-    //existing classes need a protocol added to expose API to javascript
-    Protocol* newProtocol = @protocol(ButtonExport);
-    class_addProtocol([UIButton class], newProtocol);
-
-    newProtocol = @protocol(LabelExport);
-    class_addProtocol([UILabel class], newProtocol);
-}
-
 -(void) setupContext {
     //expose our objects to javascript
     self.context = [[JSContext alloc] init];
 
-    //we can't set console.log in the context directly, only top-level objects, so let's build a top-level dummy object for console
-    JSValue* console = [JSValue valueWithNewObjectInContext:self.context];
-    console[@"log"] = ^void(NSString* string){
+    [self createObjectNamed:@"console" withMethod:@"log" block: ^void(NSString* string){
         NSLog(@"js: %@", string);
-    };
-    self.context[@"console"] = console;
+    }];
 
-    self.context[@"display"] = self.display;
-    self.context[@"clearButton"] = self.clearButton;
+    [self createObjectNamed:@"display" withMethod:@"setText" block: ^void(NSString* string){
+        [self.display setText:string];
+    }];
+
+    [self createObjectNamed:@"clearButton" withMethod:@"setOnClickListener" block: ^void(JSValue* handler){
+        [self.clearButton setOnClickListener:handler];
+    }];
+}
+
+//JSContext only lets us set top-level vars,
+//but for consistency with android I want console.log, display.setText, etc.
+//so here's a helper function to set up a dummy object.
+-(void) createObjectNamed:(NSString*)objectName withMethod:(NSString*)methodName block:(id)block {
+    JSValue* object = [JSValue valueWithNewObjectInContext:self.context];
+    object[methodName] = block;
+    self.context[objectName] = object;
 }
 
 - (void)didReceiveMemoryWarning
