@@ -31,6 +31,8 @@
 
 @property (nonatomic) IBOutlet UILabel* display;
 @property (nonatomic) IBOutlet UIButton* clearButton;
+@property (nonatomic) IBOutlet UIButton* memStoreButton;
+@property (nonatomic) IBOutlet UIButton* memRecallButton;
 
 @property (nonatomic) NSDate* lastLoad;
 @end
