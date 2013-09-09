@@ -162,10 +162,26 @@
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Clear"
+            android:text="C"
             android:id="@+id/clearButton"
             android:layout_above="@+id/button1"
             android:layout_alignLeft="@+id/button1"
-            android:layout_toLeftOf="@+id/button2"/>
+            android:layout_toLeftOf="@+id/button"/>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="M"
+            android:id="@+id/memStore"
+            android:layout_above="@+id/button"
+            android:layout_toRightOf="@+id/button1"/>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MR"
+            android:id="@+id/memRecall"
+            android:layout_above="@+id/button"
+            android:layout_toRightOf="@+id/button"/>
 
 </RelativeLayout>

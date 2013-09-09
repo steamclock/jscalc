@@ -3,7 +3,8 @@ var initialState = {
     currentExpression: "0",
     endsInSymbol: false,
     inDecimal: false,
-    expressionIsAns: true
+    expressionIsAns: true,
+    memValue: 0
 };
 
 //keep the old state if we're reloading this file.
@@ -17,6 +18,7 @@ calculator = {
     endsInSymbol: initialState.endsInSymbol,
     inDecimal: initialState.inDecimal,
     expressionIsAns: initialState.expressionIsAns,
+    memValue: initialState.memValue,
     
     buttonPress: function (operation) {
         var isSymbol = isNaN(operation);
@@ -67,14 +69,27 @@ calculator = {
         this.inDecimal = false;
         this.endsInSymbol = false;
         display.setText(this.currentExpression);
+    },
+    memStore: function() {
+        if (!isNaN(this.currentExpression)) {
+            this.memValue = this.currentExpression;
+            console.log("mem set to: "+this.memValue);
+            //TODO feedback would be nice...
+        }
+    },
+    memRecall: function() {
+        this.buttonPress(this.memValue);
     }
 };
 
 //intentional global-this to check existence safely
 if (this.clearButton) {
-    console.log('clear button exists, trying to connect');
     //not using bind here because rhino's magic "pass a function where an interface is expected" thing does not work with bind.
     clearButton.setOnClickListener(function(){calculator.clearToZero();});
+}
+if (this.memStoreButton && this.memRecallButton) {
+    memStoreButton.setOnClickListener(function(){calculator.memStore();});
+    memRecallButton.setOnClickListener(function(){calculator.memRecall();});
 }
 
 display.setText(calculator.currentExpression);

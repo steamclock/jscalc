@@ -23,6 +23,8 @@ public class MainActivity extends Activity {
 
     public TextView display;
     public Button clearButton;
+    public Button memStoreButton;
+    public Button memRecallButton;
     private Scriptable scope;
 
     @Override
@@ -32,6 +34,8 @@ public class MainActivity extends Activity {
 
         display = (TextView) findViewById(R.id.textView);
         clearButton = (Button) findViewById(R.id.clearButton);
+        memStoreButton = (Button) findViewById(R.id.memStore);
+        memRecallButton = (Button) findViewById(R.id.memRecall);
 
         initJs();
     }
@@ -66,15 +70,12 @@ public class MainActivity extends Activity {
                 scope = cx.initStandardObjects();
 
                 //set up console.log
-                Object wConsole = Context.javaToJS(new ConsoleWrapper(), scope);
-                ScriptableObject.putProperty(scope, "console", wConsole);
-
+                putObject(new ConsoleWrapper(), "console");
                 //set up widgets
-                Object wDisplay = Context.javaToJS(display, scope);
-                ScriptableObject.putProperty(scope, "display", wDisplay);
-
-                Object wClear = Context.javaToJS(clearButton, scope);
-                ScriptableObject.putProperty(scope, "clearButton", wClear);
+                putObject(display, "display");
+                putObject(clearButton, "clearButton");
+                putObject(memStoreButton, "memStoreButton");
+                putObject(memRecallButton, "memRecallButton");
 
                 //load the code
                 try {
@@ -83,6 +84,10 @@ public class MainActivity extends Activity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }
+            private void putObject(Object javaObject, String jsName) {
+                Object wrapper = Context.javaToJS(javaObject, scope);
+                ScriptableObject.putProperty(scope, jsName, wrapper);
             }
         });
     }
