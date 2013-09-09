@@ -3,7 +3,7 @@
 //  JSCalc
 //
 //  Created by Nigel Brooke on 2013-08-08.
-//  Copyright (c) 2013 Nigel Brooke. All rights reserved.
+//  Copyright (c) 2013 Steamclock Software. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -61,12 +61,13 @@
 }
 
 -(void) setupContext {
-    //expose our objects to javascript
+    // Expose our objects to JavaScript
     self.context = [[JSContext alloc] init];
 
-    //we can't set console.log in the context directly, only top-level objects, so let's build a top-level dummy object for console
+    // We can't set console.log in the context directly, only top-level objects, so let's build a top-level dummy object for console using a block
+
     JSValue* console = [JSValue valueWithNewObjectInContext:self.context];
-    console[@"log"] = ^void(NSString* string){
+    console[@"log"] = ^void(NSString* string) {
         NSLog(@"js: %@", string);
     };
     self.context[@"console"] = console;

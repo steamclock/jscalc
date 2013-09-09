@@ -3,7 +3,7 @@
 //  JSCalc
 //
 //  Created by Chani Armitage on 2013-09-05.
-//  Copyright (c) 2013 Nigel Brooke. All rights reserved.
+//  Copyright (c) 2013 Steamclock Software. All rights reserved.
 //
 
 #import "UIControl+JSAction.h"
