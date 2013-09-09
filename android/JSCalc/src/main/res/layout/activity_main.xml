@@ -33,13 +33,15 @@
                     android:text="C"
                     android:id="@+id/clearButton"
                     android:layout_weight="0.25"
-                    android:textColor="@android:color/white"/>
+                    android:textColor="@android:color/white"
+                    android:layout_margin="1dp"/>
 
             <Button
                     android:layout_width="0dip"
                     android:layout_height="fill_parent"
                     android:background="@color/symbolBg"
                     android:textColor="@android:color/white"
+                    android:layout_margin="1dp"
                     android:text="M"
                     android:id="@+id/memStore"
                     android:layout_weight="0.25"/>
@@ -48,6 +50,7 @@
                     android:layout_width="0dip"
                     android:layout_height="fill_parent"
                     android:background="@color/symbolBg"
+                    android:layout_margin="1dp"
                     android:textColor="@android:color/white"
                     android:text="MR"
                     android:id="@+id/memRecall"
@@ -58,6 +61,7 @@
                     android:layout_height="fill_parent"
                     android:background="@color/symbolBg"
                     android:textColor="@android:color/white"
+                    android:layout_margin="1dp"
                     android:text="/"
                     android:id="@+id/button15"
                     android:onClick="buttonPressed"
@@ -73,6 +77,7 @@
                     android:layout_width="0dip"
                     android:layout_height="fill_parent"
                     android:background="@color/numberBg"
+                    android:layout_margin="1dp"
                     android:text="7"
                     android:id="@+id/button1"
                     android:onClick="buttonPressed"
@@ -83,6 +88,7 @@
                     android:layout_width="0dip"
                     android:layout_height="fill_parent"
                     android:background="@color/numberBg"
+                    android:layout_margin="1dp"
                     android:text="8"
                     android:id="@+id/button"
                     android:onClick="buttonPressed"
@@ -93,6 +99,7 @@
                     android:layout_width="0dip"
                     android:layout_height="fill_parent"
                     android:background="@color/numberBg"
+                    android:layout_margin="1dp"
                     android:text="9"
                     android:id="@+id/button2"
                     android:onClick="buttonPressed"
@@ -103,6 +110,7 @@
                     android:layout_width="0dip"
                     android:layout_height="fill_parent"
                     android:background="@color/symbolBg"
+                    android:layout_margin="1dp"
                     android:text="*"
                     android:id="@+id/button3"
                     android:onClick="buttonPressed"
@@ -119,6 +127,7 @@
                     android:layout_width="0dip"
                     android:layout_height="fill_parent"
                     android:background="@color/numberBg"
+                    android:layout_margin="1dp"
                     android:text="4"
                     android:id="@+id/button4"
                     android:onClick="buttonPressed"
@@ -129,6 +138,7 @@
                     android:layout_width="0dip"
                     android:layout_height="fill_parent"
                     android:background="@color/numberBg"
+                    android:layout_margin="1dp"
                     android:text="5"
                     android:id="@+id/button5"
                     android:onClick="buttonPressed"
@@ -139,6 +149,7 @@
                     android:layout_width="0dip"
                     android:layout_height="fill_parent"
                     android:background="@color/numberBg"
+                    android:layout_margin="1dp"
                     android:text="6"
                     android:id="@+id/button6"
                     android:onClick="buttonPressed"
@@ -149,6 +160,7 @@
                     android:layout_width="0dip"
                     android:layout_height="fill_parent"
                     android:background="@color/symbolBg"
+                    android:layout_margin="1dp"
                     android:text="-"
                     android:id="@+id/button7"
                     android:onClick="buttonPressed"
@@ -165,6 +177,7 @@
                     android:layout_width="0dip"
                     android:layout_height="fill_parent"
                     android:background="@color/numberBg"
+                    android:layout_margin="1dp"
                     android:text="1"
                     android:id="@+id/button8"
                     android:onClick="buttonPressed"
@@ -175,6 +188,7 @@
                     android:layout_width="0dip"
                     android:layout_height="fill_parent"
                     android:background="@color/numberBg"
+                    android:layout_margin="1dp"
                     android:text="2"
                     android:id="@+id/button9"
                     android:onClick="buttonPressed"
@@ -185,6 +199,7 @@
                     android:layout_width="0dip"
                     android:layout_height="fill_parent"
                     android:background="@color/numberBg"
+                    android:layout_margin="1dp"
                     android:text="3"
                     android:id="@+id/button10"
                     android:onClick="buttonPressed"
@@ -195,6 +210,7 @@
                     android:layout_width="0dip"
                     android:layout_height="fill_parent"
                     android:background="@color/symbolBg"
+                    android:layout_margin="1dp"
                     android:text="+"
                     android:id="@+id/button11"
                     android:onClick="buttonPressed"
@@ -206,6 +222,12 @@
                 android:layout_width="fill_parent"
                 android:layout_height="0dip"
                 android:layout_weight="0.1">
+            
+            <View
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.25" />
 
             <Button
                     android:layout_width="0dip"
@@ -213,8 +235,9 @@
                     android:text="0"
                     android:id="@+id/button12"
                     android:onClick="buttonPressed"
-                    android:layout_weight="0.5"
+                    android:layout_weight="0.25"
                     android:background="@color/numberBg"
+                    android:layout_margin="1dp"
                     android:textColor="@android:color/white"/>
 
             <Button
@@ -223,6 +246,7 @@
                     android:text="."
                     android:id="@+id/button13"
                     android:onClick="buttonPressed"
+                    android:layout_margin="1dp"
                     android:layout_weight="0.25"
                     android:background="@color/symbolBg"
                     android:textColor="@android:color/white"/>
@@ -233,6 +257,7 @@
                     android:text="="
                     android:id="@+id/button14"
                     android:onClick="buttonPressed"
+                    android:layout_margin="1dp"
                     android:layout_weight="0.25"
                     android:background="@color/symbolBg"
                     android:textColor="@android:color/white"/>
