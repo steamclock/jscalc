@@ -39,7 +39,8 @@ calculator = {
             this.currentExpression += operation;
             this.endsInSymbol = true;
         } else if (isSymbol) {
-            if (this.endsInSymbol && (operation === '*' || this.inDecimal)) return;
+            var isSign = (operation === '+' || operation === '-');
+            if (this.endsInSymbol && (!isSign || this.inDecimal)) return;
 
             this.currentExpression = this.currentExpression + " " + operation + " ";
             this.expressionIsAns = false;
