@@ -116,6 +116,8 @@
 }
 
 -(void) checkReload {
+    // Poll your local file for changes, very convenient
+    
     NSString* originalFile = @"/Users/nigel/Development/SteamClock/JSCalc/JSCalc/JSCalc/calc.js";
     
     if ([[self modificationDateForFile:originalFile] compare:self.lastLoad] == NSOrderedDescending) {
