@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,57 +6,57 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/hello_world"
-            android:id="@+id/textView"
-            android:layout_marginTop="20dp"
-            android:gravity="right"
-            android:layout_alignParentTop="true"
-            android:layout_alignRight="@+id/linearLayout"/>
-
-
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:id="@+id/linearLayout">
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="0dip"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/hello_world"
+                android:id="@+id/textView"
+                android:layout_marginTop="20dp"
+                android:gravity="right"
+                android:layout_weight="0.3"/>
 
         <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="0.2">
+                android:layout_height="0dip"
+                android:layout_weight="0.1">
 
             <Button
                     android:layout_width="0dip"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:background="@color/symbolBg"
                     android:text="C"
                     android:id="@+id/clearButton"
-                    android:layout_weight="0.25"/>
+                    android:layout_weight="0.25"
+                    android:textColor="@android:color/white"/>
 
             <Button
                     android:layout_width="0dip"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:background="@color/symbolBg"
+                    android:textColor="@android:color/white"
                     android:text="M"
                     android:id="@+id/memStore"
                     android:layout_weight="0.25"/>
 
             <Button
                     android:layout_width="0dip"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:background="@color/symbolBg"
+                    android:textColor="@android:color/white"
                     android:text="MR"
                     android:id="@+id/memRecall"
                     android:layout_weight="0.25"/>
 
             <Button
                     android:layout_width="0dip"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:background="@color/symbolBg"
+                    android:textColor="@android:color/white"
                     android:text="/"
                     android:id="@+id/button15"
                     android:onClick="buttonPressed"
@@ -65,147 +65,175 @@
 
         <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="0.2">
+                android:layout_height="0dip"
+                android:layout_weight="0.1">
 
             <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:background="@color/numberBg"
                     android:text="7"
                     android:id="@+id/button1"
                     android:onClick="buttonPressed"
-                    android:layout_weight="0.25"/>
+                    android:layout_weight="0.25"
+                    android:textColor="@android:color/white"/>
 
             <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:background="@color/numberBg"
                     android:text="8"
                     android:id="@+id/button"
                     android:onClick="buttonPressed"
-                    android:layout_weight="0.25"/>
+                    android:layout_weight="0.25"
+                    android:textColor="@android:color/white"/>
 
             <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:background="@color/numberBg"
                     android:text="9"
                     android:id="@+id/button2"
                     android:onClick="buttonPressed"
-                    android:layout_weight="0.25"/>
+                    android:layout_weight="0.25"
+                    android:textColor="@android:color/white"/>
 
             <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:background="@color/symbolBg"
                     android:text="*"
                     android:id="@+id/button3"
                     android:onClick="buttonPressed"
-                    android:layout_weight="0.25"/>
+                    android:layout_weight="0.25"
+                    android:textColor="@android:color/white"/>
         </LinearLayout>
 
         <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="0.2">
+                android:layout_height="0dip"
+                android:layout_weight="0.1">
 
             <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:background="@color/numberBg"
                     android:text="4"
                     android:id="@+id/button4"
                     android:onClick="buttonPressed"
-                    android:layout_weight="0.25"/>
+                    android:layout_weight="0.25"
+                    android:textColor="@android:color/white"/>
 
             <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:background="@color/numberBg"
                     android:text="5"
                     android:id="@+id/button5"
                     android:onClick="buttonPressed"
-                    android:layout_weight="0.25"/>
+                    android:layout_weight="0.25"
+                    android:textColor="@android:color/white"/>
 
             <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:background="@color/numberBg"
                     android:text="6"
                     android:id="@+id/button6"
                     android:onClick="buttonPressed"
-                    android:layout_weight="0.25"/>
+                    android:layout_weight="0.25"
+                    android:textColor="@android:color/white"/>
 
             <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:background="@color/symbolBg"
                     android:text="-"
                     android:id="@+id/button7"
                     android:onClick="buttonPressed"
-                    android:layout_weight="0.25"/>
+                    android:layout_weight="0.25"
+                    android:textColor="@android:color/white"/>
         </LinearLayout>
 
         <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="0.2">
+                android:layout_height="0dip"
+                android:layout_weight="0.1">
 
             <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:background="@color/numberBg"
                     android:text="1"
                     android:id="@+id/button8"
                     android:onClick="buttonPressed"
-                    android:layout_weight="0.25"/>
+                    android:layout_weight="0.25"
+                    android:textColor="@android:color/white"/>
 
             <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:background="@color/numberBg"
                     android:text="2"
                     android:id="@+id/button9"
                     android:onClick="buttonPressed"
-                    android:layout_weight="0.25"/>
+                    android:layout_weight="0.25"
+                    android:textColor="@android:color/white"/>
 
             <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:background="@color/numberBg"
                     android:text="3"
                     android:id="@+id/button10"
                     android:onClick="buttonPressed"
-                    android:layout_weight="0.25"/>
+                    android:layout_weight="0.25"
+                    android:textColor="@android:color/white"/>
 
             <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:background="@color/symbolBg"
                     android:text="+"
                     android:id="@+id/button11"
                     android:onClick="buttonPressed"
-                    android:layout_weight="0.25"/>
+                    android:layout_weight="0.25"
+                    android:textColor="@android:color/white"/>
         </LinearLayout>
 
         <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="0.2">
+                android:layout_height="0dip"
+                android:layout_weight="0.1">
 
             <Button
                     android:layout_width="0dip"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
                     android:text="0"
                     android:id="@+id/button12"
                     android:onClick="buttonPressed"
-                    android:layout_weight="0.5"/>
+                    android:layout_weight="0.5"
+                    android:background="@color/numberBg"
+                    android:textColor="@android:color/white"/>
 
             <Button
                     android:layout_width="0dip"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
                     android:text="."
                     android:id="@+id/button13"
                     android:onClick="buttonPressed"
-                    android:layout_weight="0.25"/>
+                    android:layout_weight="0.25"
+                    android:background="@color/symbolBg"
+                    android:textColor="@android:color/white"/>
 
             <Button
                     android:layout_width="0dip"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
                     android:text="="
                     android:id="@+id/button14"
                     android:onClick="buttonPressed"
-                    android:layout_weight="0.25"/>
+                    android:layout_weight="0.25"
+                    android:background="@color/symbolBg"
+                    android:textColor="@android:color/white"/>
         </LinearLayout>
     </LinearLayout>
-
-</RelativeLayout>
