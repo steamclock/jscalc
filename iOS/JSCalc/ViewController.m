@@ -73,6 +73,8 @@
 
     self.context[@"display"] = self.display;
     self.context[@"clearButton"] = self.clearButton;
+    self.context[@"memStoreButton"] = self.memStoreButton;
+    self.context[@"memRecallButton"] = self.memRecallButton;
 }
 
 - (void)didReceiveMemoryWarning
