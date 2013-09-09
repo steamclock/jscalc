@@ -184,4 +184,13 @@
             android:layout_above="@+id/button"
             android:layout_toRightOf="@+id/button"/>
 
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/"
+            android:id="@+id/button15"
+            android:onClick="buttonPressed"
+            android:layout_alignTop="@+id/memRecall"
+            android:layout_alignLeft="@+id/button3"/>
+
 </RelativeLayout>
