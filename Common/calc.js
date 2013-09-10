@@ -1,4 +1,6 @@
-// default state of calculator object
+// JavaScript Calculator Demo
+
+// Default state of the calculator
 var initialState = {
     currentExpression: "0",
     endsInSymbol: false,
@@ -7,12 +9,12 @@ var initialState = {
     memValue: 0
 };
 
-//keep the old state if we're reloading this file.
-if(typeof calculator != 'undefined') {
+// Keep the old state if we're reloading this file.
+if (typeof calculator != 'undefined') {
     initialState = calculator;
 }
 
-// define the calculator object
+// Define the calculator
 calculator = {
     currentExpression: initialState.currentExpression,
     endsInSymbol: initialState.endsInSymbol,
@@ -21,9 +23,11 @@ calculator = {
     memValue: initialState.memValue,
     
     buttonPress: function (operation) {
+        // The magic happens
+        
         var isSymbol = isNaN(operation);
         
-        if(operation === "=") {
+        if (operation === "=") {
             if (this.endsInSymbol) return;
 
             this.currentExpression = eval(this.currentExpression).toString();
@@ -46,7 +50,8 @@ calculator = {
             this.expressionIsAns = false;
             this.endsInSymbol = true;
             this.inDecimal = false;
-        } else { //number
+        } else {
+            // Pressed a number
             if(this.expressionIsAns) {
                 this.clear();
             }
@@ -58,12 +63,14 @@ calculator = {
         display.setText(this.currentExpression);
         
     },
+
     clear: function(){
         this.currentExpression = "";
         this.expressionIsAns = false;
         this.inDecimal = false;
         this.endsInSymbol = false;
     },
+
     clearToZero: function() {
         this.currentExpression = "0";
         this.expressionIsAns = true;
@@ -71,6 +78,7 @@ calculator = {
         this.endsInSymbol = false;
         display.setText(this.currentExpression);
     },
+
     memStore: function() {
         if (!isNaN(this.currentExpression)) {
             this.memValue = this.currentExpression;
@@ -78,21 +86,31 @@ calculator = {
             //TODO feedback would be nice...
         }
     },
+
     memRecall: function() {
         this.buttonPress(this.memValue);
     }
 };
 
-//intentional global-this to check existence safely
+// Intentional global-this to check existence safely
+
 if (this.clearButton) {
-    //not using bind here because rhino's magic "pass a function where an interface is expected" thing does not work with bind.
-    clearButton.setOnClickListener(function(){calculator.clearToZero();});
+    // Not using bind here because rhino's magic "pass a function where an interface is expected" thing does not work with bind
+    clearButton.setOnClickListener(function() {
+        calculator.clearToZero();
+    });
 }
+
 if (this.memStoreButton && this.memRecallButton) {
-    memStoreButton.setOnClickListener(function(){calculator.memStore();});
-    memRecallButton.setOnClickListener(function(){calculator.memRecall();});
+    memStoreButton.setOnClickListener(function() {
+        calculator.memStore();
+    });
+    
+    memRecallButton.setOnClickListener(function() {
+        calculator.memRecall();
+    });
 }
 
 display.setText(calculator.currentExpression);
 
-console.log("Loaded calc.js");
+console.log("Loaded calc.js.");
