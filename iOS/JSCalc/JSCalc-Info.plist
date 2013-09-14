@@ -22,6 +22,10 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIMainStoryboardFile</key>
@@ -30,6 +34,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIStatusBarTintParameters</key>
+	<dict/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

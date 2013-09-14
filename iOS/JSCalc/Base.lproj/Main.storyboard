@@ -266,11 +266,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zD0-sH-yb1" userLabel="Display">
-                                <rect key="frame" x="0.0" y="20" width="320" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="168"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kO9-io-RAs" userLabel="Display Label">
-                                        <rect key="frame" x="15" y="0.0" width="285" height="171"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kO9-io-RAs" userLabel="Display Label">
+                                        <rect key="frame" x="15" y="20" width="285" height="151"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -283,7 +283,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" secondItem="kO9-io-RAs" secondAttribute="height" id="Cv1-iV-86U"/>
+                                    <constraint firstAttribute="height" secondItem="kO9-io-RAs" secondAttribute="height" constant="20" id="Cv1-iV-86U"/>
                                     <constraint firstItem="kO9-io-RAs" firstAttribute="leading" secondItem="zD0-sH-yb1" secondAttribute="leading" constant="15" id="KTf-KX-Y06"/>
                                     <constraint firstAttribute="bottom" secondItem="kO9-io-RAs" secondAttribute="bottom" id="QV4-dK-JgZ"/>
                                 </constraints>
@@ -293,9 +293,10 @@
                         <constraints>
                             <constraint firstItem="2NC-cI-g9g" firstAttribute="top" secondItem="zD0-sH-yb1" secondAttribute="bottom" id="8kA-uR-pzW"/>
                             <constraint firstAttribute="bottom" secondItem="2NC-cI-g9g" secondAttribute="bottom" id="I9x-5p-0FK"/>
-                            <constraint firstItem="zD0-sH-yb1" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="20" id="TkD-dd-Cc4"/>
+                            <constraint firstItem="zD0-sH-yb1" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="TkD-dd-Cc4"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="clearButton" destination="q7f-cT-hRz" id="HhJ-bC-1PH"/>
                         <outlet property="display" destination="kO9-io-RAs" id="K57-Ss-Cx4"/>
