@@ -5,6 +5,7 @@ A cross-platform mobile calculator with the logic in JavaScript and native UI on
 
 This is a proof of concept applciation for JSConf EU 2013, and Steamclock's future work on embedding JavaScript into native apps.
 
+The slides from @apike's JSConf EU talk are available here: http://www.allenpike.com/slides/JSinNativeApps_JSConfEU2013.pdf
 
 Building For iOS
 ================
